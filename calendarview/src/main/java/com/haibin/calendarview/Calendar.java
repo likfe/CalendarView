@@ -19,6 +19,7 @@ import android.text.TextUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -480,5 +481,15 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
         public void setObj(Object obj) {
             this.obj = obj;
         }
+    }
+
+    public static Calendar today() {
+        Calendar calendar = new Calendar();
+        Date d = new Date();
+        calendar.setYear(CalendarUtil.getDate("yyyy", d));
+        calendar.setMonth(CalendarUtil.getDate("MM", d));
+        calendar.setDay(CalendarUtil.getDate("dd", d));
+        calendar.setCurrentDay(true);
+        return calendar;
     }
 }
