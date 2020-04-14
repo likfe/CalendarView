@@ -20,10 +20,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -292,6 +293,7 @@ public abstract class YearView extends View {
      * @param width  width
      * @param height height
      */
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     final void measureSize(int width, int height) {
 
         Rect rect = new Rect();
@@ -329,6 +331,9 @@ public abstract class YearView extends View {
         for (Calendar a : mItems) {
             if (mDelegate.mSchemeDatesMap.containsKey(a.toString())) {
                 Calendar d = mDelegate.mSchemeDatesMap.get(a.toString());
+                if(d == null){
+                    continue;
+                }
                 a.setScheme(TextUtils.isEmpty(d.getScheme()) ? mDelegate.getSchemeText() : d.getScheme());
                 a.setSchemeColor(d.getSchemeColor());
                 a.setSchemes(d.getSchemes());
