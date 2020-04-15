@@ -27,9 +27,8 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public final class Calendar implements Serializable, Comparable<Calendar> {
+    public static final String CALENDAR_PATTERN = "yyyyMMdd";
     private static final long serialVersionUID = 141315161718191143L;
-
-
     /**
      * 年
      */
@@ -122,6 +121,24 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
      */
     private Calendar lunarCalendar;
 
+    public Calendar() {
+    }
+
+    public Calendar(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    public static Calendar today() {
+        Calendar calendar = new Calendar();
+        Date d = new Date();
+        calendar.setYear(CalendarUtil.getDate("yyyy", d));
+        calendar.setMonth(CalendarUtil.getDate("MM", d));
+        calendar.setDay(CalendarUtil.getDate("dd", d));
+        calendar.setCurrentDay(true);
+        return calendar;
+    }
 
     public int getYear() {
         return year;
@@ -328,6 +345,7 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
      * @param calendar 日期
      * @return -1 0 1
      */
+    @Override
     public int compareTo(Calendar calendar) {
         if (calendar == null) {
             return 1;
@@ -376,6 +394,10 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
         return super.equals(o);
     }
 
+    /**
+     * 样式
+     * 20190101
+     */
     @Override
     public String toString() {
         return year + "" + (month < 10 ? "0" + month : month) + "" + (day < 10 ? "0" + day : day);
@@ -481,15 +503,5 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
         public void setObj(Object obj) {
             this.obj = obj;
         }
-    }
-
-    public static Calendar today() {
-        Calendar calendar = new Calendar();
-        Date d = new Date();
-        calendar.setYear(CalendarUtil.getDate("yyyy", d));
-        calendar.setMonth(CalendarUtil.getDate("MM", d));
-        calendar.setDay(CalendarUtil.getDate("dd", d));
-        calendar.setCurrentDay(true);
-        return calendar;
     }
 }
