@@ -20,6 +20,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +43,8 @@ import java.util.Map;
 /**
  * 日历布局
  * 各个类使用包权限，避免不必要的public
+ * https://github.com/huanghaibin-dev/CalendarView
+ * 2019-7-4
  */
 @SuppressWarnings({"unused"})
 public class CalendarView extends FrameLayout {
@@ -47,32 +52,32 @@ public class CalendarView extends FrameLayout {
     /**
      * 抽取自定义属性
      */
-    private final CalendarViewDelegate mDelegate;
+    protected CalendarViewDelegate mDelegate;
 
     /**
      * 自定义自适应高度的ViewPager
      */
-    private MonthViewPager mMonthPager;
+    protected MonthViewPager mMonthPager;
 
     /**
      * 日历周视图
      */
-    private WeekViewPager mWeekPager;
+    protected WeekViewPager mWeekPager;
 
     /**
      * 星期栏的线
      */
-    private View mWeekLine;
+    protected View mWeekLine;
 
     /**
      * 月份快速选取
      */
-    private YearViewPager mYearViewPager;
+    protected YearViewPager mYearViewPager;
 
     /**
      * 星期栏
      */
-    private WeekBar mWeekBar;
+    protected WeekBar mWeekBar;
 
     /**
      * 日历外部收缩布局
@@ -87,7 +92,7 @@ public class CalendarView extends FrameLayout {
     public CalendarView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mDelegate = new CalendarViewDelegate(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     /**
@@ -95,7 +100,7 @@ public class CalendarView extends FrameLayout {
      *
      * @param context context
      */
-    private void init(Context context) {
+    protected void init(Context context, @Nullable AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.cv_layout_calendar_view, this, true);
         FrameLayout frameContent = findViewById(R.id.frameContent);
         this.mWeekPager = findViewById(R.id.vp_week);
