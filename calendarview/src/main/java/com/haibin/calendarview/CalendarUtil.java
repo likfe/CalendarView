@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * 一些日期辅助计算工具
  */
-final class CalendarUtil {
+public final class CalendarUtil {
 
     private static final long ONE_DAY = 1000 * 3600 * 24;
 
@@ -54,7 +54,7 @@ final class CalendarUtil {
      * @param month 月
      * @return 某月的天数
      */
-    static int getMonthDaysCount(int year, int month) {
+    public static int getMonthDaysCount(int year, int month) {
         int count = 0;
         //判断大月份
         if (month == 1 || month == 3 || month == 5 || month == 7
@@ -85,7 +85,7 @@ final class CalendarUtil {
      * @param year year
      * @return 是否是闰年
      */
-    static boolean isLeapYear(int year) {
+    public static boolean isLeapYear(int year) {
         return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     }
 
@@ -449,7 +449,7 @@ final class CalendarUtil {
      * @param delegate delegate
      * @return 是否在日期范围内
      */
-    static boolean isCalendarInRange(Calendar calendar, CalendarViewDelegate delegate) {
+    public static boolean isCalendarInRange(Calendar calendar, CalendarViewDelegate delegate) {
         return isCalendarInRange(calendar,
                 delegate.getMinYear(), delegate.getMinYearMonth(), delegate.getMinYearDay(),
                 delegate.getMaxYear(), delegate.getMaxYearMonth(), delegate.getMaxYearDay());
