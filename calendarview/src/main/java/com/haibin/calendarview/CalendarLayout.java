@@ -121,17 +121,17 @@ public class CalendarLayout extends LinearLayout {
     /**
      * 默认手势
      */
-    private static final int GESTURE_MODE_DEFAULT = 0;
+    public static final int GESTURE_MODE_DEFAULT = 0;
 
 //       /**
     //     * 仅日历有效
     //     */
-//    private static final int GESTURE_MODE_ONLY_CALENDAR = 1;
+//    public static final int GESTURE_MODE_ONLY_CALENDAR = 1;
 
     /**
      * 禁用手势
      */
-    private static final int GESTURE_MODE_DISABLED = 2;
+    public static final int GESTURE_MODE_DISABLED = 2;
 
     /**
      * 手势模式
@@ -954,6 +954,10 @@ public class CalendarLayout extends LinearLayout {
     private int getCalendarViewHeight() {
         return mMonthView.getVisibility() == VISIBLE ? mDelegate.getWeekBarHeight() + mMonthView.getHeight() :
                 mDelegate.getWeekBarHeight() + mDelegate.getCalendarItemHeight();
+    }
+
+    public void setGestureMode(int gestureMode) {
+        mGestureMode = gestureMode;
     }
 
     /**
