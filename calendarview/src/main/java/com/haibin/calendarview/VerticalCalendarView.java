@@ -73,9 +73,9 @@ public class VerticalCalendarView extends CalendarView {
         this.mWeekLine = findViewById(R.id.line);
         this.mWeekLine.setBackgroundColor(mDelegate.getWeekLineBackground());
         LayoutParams lineParams = (LayoutParams) this.mWeekLine.getLayoutParams();
-        lineParams.setMargins(mDelegate.getWeekLineMargin(),
-                mDelegate.getWeekBarHeight(),
-                mDelegate.getWeekLineMargin(),
+        lineParams.setMargins((int) mDelegate.getWeekLineMargin(),
+                (int) mDelegate.getWeekBarHeight(),
+                (int) mDelegate.getWeekLineMargin(),
                 0);
         this.mWeekLine.setLayoutParams(lineParams);
 
@@ -87,12 +87,12 @@ public class VerticalCalendarView extends CalendarView {
         //this.mMonthPager.mWeekBar = mWeekBar;
         //mMonthPager.setup(mDelegate);
         LayoutParams params = (LayoutParams) this.monthRecyclerView.getLayoutParams();
-        params.setMargins(0, mDelegate.getWeekBarHeight() + CalendarUtil.dipToPx(context, 1), 0, 0);
+        params.setMargins(0, (int) mDelegate.getWeekBarHeight() + CalendarUtil.dipToPx(context, 1), 0, 0);
         mWeekPager.setLayoutParams(params);
 
         //年视图
         mYearViewPager = findViewById(R.id.selectLayout);
-        mYearViewPager.setPadding(mDelegate.getYearViewPaddingLeft(), 0, mDelegate.getYearViewPaddingRight(), 0);
+        mYearViewPager.setPadding((int) mDelegate.getYearViewPaddingLeft(), 0, (int) mDelegate.getYearViewPaddingRight(), 0);
         mYearViewPager.setBackgroundColor(mDelegate.getYearViewBackground());
         mYearViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

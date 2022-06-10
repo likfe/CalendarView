@@ -3,7 +3,6 @@ package com.haibin.calendarview;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.animation.LinearInterpolator;
@@ -64,9 +63,9 @@ public class StickyVerticalCalendarView extends CalendarView {
         this.mWeekLine = findViewById(R.id.line);
         this.mWeekLine.setBackgroundColor(mDelegate.getWeekLineBackground());
         RelativeLayout.LayoutParams lineParams = (RelativeLayout.LayoutParams) this.mWeekLine.getLayoutParams();
-        lineParams.setMargins(mDelegate.getWeekLineMargin(),
-                mDelegate.getWeekBarHeight(),
-                mDelegate.getWeekLineMargin(),
+        lineParams.setMargins((int) mDelegate.getWeekLineMargin(),
+                (int) mDelegate.getWeekBarHeight(),
+                (int) mDelegate.getWeekLineMargin(),
                 0);
         this.mWeekLine.setLayoutParams(lineParams);
 
@@ -76,7 +75,7 @@ public class StickyVerticalCalendarView extends CalendarView {
 
         //年视图
         mYearViewPager = findViewById(R.id.selectLayout);
-        mYearViewPager.setPadding(mDelegate.getYearViewPaddingLeft(), 0, mDelegate.getYearViewPaddingRight(), 0);
+        mYearViewPager.setPadding((int) mDelegate.getYearViewPaddingLeft(), 0, (int) mDelegate.getYearViewPaddingRight(), 0);
         mYearViewPager.setBackgroundColor(mDelegate.getYearViewBackground());
         mYearViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
